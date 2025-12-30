@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="color:white;">🎶 Songs</h2>
+
+<div class="song-list">
+    {% if songs %}
+        {% for song in songs %}
+            <div style="margin:15px 0; display:flex; align-items:center;">
+
+                <!-- PLAY SONG -->
+                <a href="{{ url_for('play_song', song_id=song['id']) }}"
+                   style="color:white; font-size:18px; text-decoration:none; flex:1;">
+                    🎵 {{ song['title'] }}
+                </a>
+
+                <!-- HEART -->
+                <span
+                  onclick="toggleFav({{ song['id'] }})"
+                  style="cursor:pointer; font-size:20px;">
+                  🤍
+                </span>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="color:white;">No songs found</p>
+    {% endif %}
+</div>
+
+<script>
+function toggleFav(songId) {
+    fetch(`/toggle-favourite/${songId}`)
+        .then(() => location.reload());
+}
+</script>
+{% endblock %}
