@@ -13,7 +13,7 @@ A Flask-based web application for playing digital media.
 
 1. Clone the repository:
    ```bash
-   git clone <your-github-repo-url>
+   git clone https://github.com/Aashish2004-mack/mediaa.git
    cd digital-media-player
    ```
 
